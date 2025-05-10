@@ -7,6 +7,7 @@ package poiupv;
 
 import javafx.fxml.FXML;
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.time.LocalDate;
@@ -21,8 +22,11 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
@@ -33,6 +37,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class FXMLRegisterController implements Initializable {
 
@@ -205,6 +210,24 @@ public class FXMLRegisterController implements Initializable {
         validUsername.setValue(Boolean.FALSE);
         validPassword.setValue(Boolean.FALSE);
         validDate.setValue(Boolean.FALSE);
+        
+        try {
+            // Cargar la nueva interfaz
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLConfirmRegister.fxml"));
+            Parent root = loader.load();
+
+            // Crear una nueva ventana
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Register Confirmado");
+            stage.show();
+
+            // (Opcional) Cerrar la ventana actual
+            // ((Node)(event.getSource())).getScene().getWindow().hide();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void handleBotFotoOnAction(ActionEvent event) {
