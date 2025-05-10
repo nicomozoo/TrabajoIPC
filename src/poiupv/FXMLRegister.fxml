@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLRegisterController">
+<fx:root type="VBox" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLRegisterController">
    <children>
       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #A259FF;">
          <children>
@@ -69,7 +69,7 @@
                   </VBox>
                   <VBox alignment="BOTTOM_RIGHT" prefHeight="121.0" prefWidth="182.0">
                      <children>
-                        <ImageView fitHeight="103.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imagenFotoPerfil" fitHeight="103.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/logo.png" />
                            </image>
@@ -108,7 +108,7 @@
                            </VBox.margin>
                         </Label>
                         <TextField fx:id="usernameField" prefHeight="26.0" prefWidth="350.0" promptText="LettersNumbersSymbols" />
-                        <Label fx:id="usernameError" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="709.0" text="Entre 8 y 20 caracteres, al menos una letra en mayúsculas y minúsculas, así como algún dígito y algún carácter especial " textFill="#ca0505" />
+                        <Label fx:id="usernameError" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="709.0" text="Entre 6 y 15 caracteres sin espacios, pudiendo usar guiones o sub-guiones" textFill="#ca0505" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="20.0" left="10.0" />
@@ -118,11 +118,11 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <children>
-                  <VBox prefHeight="135.0" prefWidth="511.0">
+                  <VBox prefHeight="78.0" prefWidth="718.0">
                      <children>
                         <Label text="Password" textFill="#025477" />
                         <TextField fx:id="passwordField" maxWidth="351.0" minWidth="80.0" prefHeight="26.0" prefWidth="351.0" promptText="LettersNumbersSymbols" />
-                        <Label fx:id="passwordError" alignment="BOTTOM_LEFT" prefHeight="13.0" prefWidth="290.0" text="  Passwords don't match" textFill="#ca0505" />
+                        <Label fx:id="passwordError" alignment="BOTTOM_LEFT" prefHeight="18.0" prefWidth="642.0" text="Entre 8 y 20 caracteres, al menos una letra en mayúsculas y minúsculas, así como algún dígito y algún carácter especial " textFill="#ca0505" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="13.0" left="10.0" />
@@ -171,4 +171,4 @@
          </padding>
       </GridPane>
    </children>
-</VBox>
+</fx:root>
