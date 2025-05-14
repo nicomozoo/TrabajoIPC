@@ -24,7 +24,7 @@
          <children>
             <ImageView fitHeight="70.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../Downloads/logo%20barco.png" />
+                  <Image url="@../resources/logo%20barco.png" />
                </image>
             </ImageView>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=" Register form" wrappingWidth="389.58929693698883">
@@ -155,7 +155,7 @@
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="botCancel" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="99.0" style="-fx-background-color: #A259FF;" text="Cancel" textFill="WHITE">
+                  <Button fx:id="botCancel" graphicTextGap="7.0" mnemonicParsing="false" onAction="#handleBotCancel" prefHeight="14.0" prefWidth="99.0" style="-fx-background-color: #A259FF;" text="Cancel" textFill="WHITE">
                      <HBox.margin>
                         <Insets bottom="20.0" left="15.0" right="20.0" top="20.0" />
                      </HBox.margin>

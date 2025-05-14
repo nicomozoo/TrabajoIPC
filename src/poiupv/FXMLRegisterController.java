@@ -63,6 +63,7 @@ public class FXMLRegisterController implements Initializable {
     
     
     
+    @FXML
     private TextField usernameField;
     @FXML
     private Label usernameError;
@@ -231,6 +232,7 @@ public class FXMLRegisterController implements Initializable {
         }
     }
 
+    @FXML
     private void handleBotFotoOnAction(ActionEvent event) {
          FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Seleccionar imagen de perfil");
@@ -248,5 +250,21 @@ public class FXMLRegisterController implements Initializable {
 
     void setCurrentUser(User currentUser) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @FXML
+    private void handleBotCancel(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLInicio.fxml")); // o FXMLMain.fxml
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Inicio");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    
     }
 }

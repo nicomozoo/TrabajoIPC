@@ -39,7 +39,7 @@ public class FXMLInicioController {
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
-            stage.setTitle("Inicio Sesiónoooo");
+            stage.setTitle("Inicio Sesión");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

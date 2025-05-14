@@ -12,7 +12,7 @@
     <!-- LOGO -->
     <ImageView fx:id="logoImage" fitHeight="120.0" fitWidth="120.0" preserveRatio="true">
         <image>
-            <Image url="@../../../../../../../Downloads/logo%20barco.png" /> <!-- Asegúrate de que 'logo.png' esté en la carpeta correcta -->
+            <Image url="@../resources/logo%20barco.png" /> <!-- Asegúrate de que 'logo.png' esté en la carpeta correcta -->
         </image>
     </ImageView>
 
