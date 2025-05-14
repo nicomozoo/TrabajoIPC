@@ -38,6 +38,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.NavDAOException;
+import model.Navigation;
 import model.User;
 
 public class FXMLRegisterController implements Initializable {
@@ -80,7 +82,7 @@ public class FXMLRegisterController implements Initializable {
     @FXML
     private Button botCancel;
     @FXML
-    private MenuButton botFoto;
+    private Button botFoto;
     @FXML
     private ImageView imagenFotoPerfil;
 
@@ -102,7 +104,7 @@ public class FXMLRegisterController implements Initializable {
     
     private void checkPassword(){
         String password = passwordField.getText();
-        boolean isValid = password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[^a-zA-Z0-9]).{8,20}$");
+        boolean isValid = password.matches("^[a-zA-Z\\d!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]{8,20}$");
         validPassword.set(isValid);
         showError(isValid, passwordField, passwordError);
     }
@@ -202,7 +204,9 @@ public class FXMLRegisterController implements Initializable {
     }
 
     @FXML
-    private void handleBotAcceptOnAction(ActionEvent event) {
+    private void handleBotAcceptOnAction(ActionEvent event) throws NavDAOException {
+        User user = Navigation.getInstance().registerUser(usernameField.getText(), emailField.getText(), passwordField.getText(), imagenFotoPerfil.getImage(), birthField.getValue());
+        
         emailField.clear();
         usernameField.clear();
         passwordField.clear();
@@ -212,6 +216,7 @@ public class FXMLRegisterController implements Initializable {
         validUsername.setValue(Boolean.FALSE);
         validPassword.setValue(Boolean.FALSE);
         validDate.setValue(Boolean.FALSE);
+        
         
         try {
             // Cargar la nueva interfaz
@@ -234,18 +239,13 @@ public class FXMLRegisterController implements Initializable {
 
     @FXML
     private void handleBotFotoOnAction(ActionEvent event) {
-         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Seleccionar imagen de perfil");
-        fileChooser.getExtensionFilters().addAll(
+         FileChooser fc = new FileChooser();
+        fc.setTitle("Seleccionar imagen de perfil");
+        fc.getExtensionFilters().addAll(
             new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.jpeg", "*.gif")
         );
 
-        File selectedFile = fileChooser.showOpenDialog(botFoto.getScene().getWindow());
-        if (selectedFile != null) {
-            Image image = new Image(selectedFile.toURI().toString());
-            imagenFotoPerfil.setImage(image);
-        }
-    
+        imagenFotoPerfil.setImage(new Image(fc.showOpenDialog(new Stage()).toURI().toString()));    
     }
 
     void setCurrentUser(User currentUser) {
