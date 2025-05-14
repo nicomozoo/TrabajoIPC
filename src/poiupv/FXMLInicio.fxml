@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom, #ffffff, #e0e0e0);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLInicioController">
+
+    <!-- LOGO -->
+    <ImageView fx:id="logoImage" fitHeight="120.0" fitWidth="120.0" preserveRatio="true">
+        <image>
+            <Image url="@../../../../../../../Downloads/logo%20barco.png" /> <!-- Asegúrate de que 'logo.png' esté en la carpeta correcta -->
+        </image>
+    </ImageView>
+
+    <!-- NOMBRE DE LA APP -->
+    <Label fx:id="labelAppName" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #333;" text="NAVALTEST" />
+
+    <!-- BOTONES -->
+    <Button fx:id="botLogin" onAction="#handleBotLogin" prefWidth="200.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;" text="Iniciar sesión" />
+
+    <Button fx:id="botRegister" onAction="#handleBotRegister" prefWidth="200.0" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 16px;" text="Registrarse" />
+
+    <padding>
+        <Insets bottom="40.0" left="20.0" right="20.0" top="40.0" />
+    </padding>
+</VBox>

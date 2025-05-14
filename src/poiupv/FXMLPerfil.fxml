@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLPerfilController">
+   <children>
+      <VBox layoutX="-5.0" layoutY="-1.0" prefHeight="400.0" prefWidth="607.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="146.0" prefWidth="607.0">
+               <children>
+                  <ImageView fx:id="imagenFotoPerfil" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/usuario_icono_morado.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="5.0" top="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <MenuButton fx:id="botFoto" mnemonicParsing="false" onAction="#handleBotFotoOnAction" prefHeight="26.0" prefWidth="145.0" style="-fx-background-color: #A259FF;" text="Cambiar foto de perfil" textFill="WHITE">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Selecciona de tu ordenador" />
+                     </items>
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </MenuButton>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="482.0">
+               <children>
+                  <TextField fx:id="emailField" minWidth="50.0" prefHeight="20.0" prefWidth="50.0" promptText="modificar email">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="150.0" right="150.0" top="50.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="passwordField" prefHeight="20.0" prefWidth="50.0" promptText="modificar contraseña">
+                     <VBox.margin>
+                        <Insets left="150.0" right="150.0" top="20.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <DatePicker fx:id="birthField" prefHeight="20.0" prefWidth="700.0" promptText="modificar fecha de nacimiento">
+                     <VBox.margin>
+                        <Insets left="150.0" right="150.0" top="20.0" />
+                     </VBox.margin>
+                  </DatePicker>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="botGuardar" alignment="CENTER" mnemonicParsing="false" onAction="#handleBotGuardar" style="-fx-background-color: #A259FF;" text="Guardar" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="botVolver" mnemonicParsing="false" onAction="#handleBotVolver" style="-fx-background-color: #A259FF;" text="Volver" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Circle fill="#a259ff" layoutX="600.0" layoutY="-1.0" radius="82.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fill="#a259ff" layoutY="399.0" radius="82.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fill="#a259ff" layoutX="600.0" layoutY="399.0" radius="82.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fill="#a259ff" layoutY="-1.0" radius="82.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+   </children>
+</AnchorPane>
