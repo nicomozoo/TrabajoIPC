@@ -52,6 +52,7 @@
                   </MenuItem>
               </items>
             </MenuButton>
+            <Button mnemonicParsing="false" onAction="#preguntasOnAction" text="Preguntas" />
             <Region HBox.hgrow="ALWAYS" />
             <Label text="Zoom" />
             <Button mnemonicParsing="false" onAction="#zoomOut" text="-" />

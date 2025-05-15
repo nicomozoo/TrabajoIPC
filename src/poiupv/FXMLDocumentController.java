@@ -295,4 +295,18 @@ public class FXMLDocumentController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+    private void preguntasOnAction(ActionEvent event) {
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLPreguntas.fxml"));
+        Parent root = loader.load();
+        FXMLPreguntasController controller = loader.getController();
+        controller.cargarProblema();
+        splitPane.getChildrenUnmodifiable().setAll(root);
+        controller.setCurrentUser(currentUser);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
 }
