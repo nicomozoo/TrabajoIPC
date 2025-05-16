@@ -299,14 +299,25 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void preguntasOnAction(ActionEvent event) {
         try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLPreguntas.fxml"));
-        Parent root = loader.load();
-        FXMLPreguntasController controller = loader.getController();
-        controller.cargarProblema();
-        splitPane.getChildrenUnmodifiable().setAll(root);
-        controller.setCurrentUser(currentUser);
-    } catch (IOException e) {
-        e.printStackTrace();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLPreguntas.fxml"));
+            Parent root = loader.load();
+            FXMLPreguntasController controller = loader.getController();
+            controller.setCurrentUser(currentUser);
+            controller.cargarProblema();
+    
+            // Crear un nuevo Stage (ventana)
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.setTitle("Preguntas");
+    
+            // Opcional: si quieres que esta ventana sea modal (bloquea la anterior)
+            // newStage.initModality(Modality.APPLICATION_MODAL);
+    
+            newStage.show();
+    
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    }
+    
 }
