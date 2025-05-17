@@ -52,9 +52,9 @@ public class FXMLSesionesController implements Initializable{
 
     public void initialize(URL url, ResourceBundle rb) {
         // Vincular columnas con propiedades de la clase Session
-        fechaCol.setCellValueFactory(new PropertyValueFactory<>("date"));
-        aciertosCol.setCellValueFactory(new PropertyValueFactory<>("hits"));
-        fallosCol.setCellValueFactory(new PropertyValueFactory<>("faults"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+        hitsCol.setCellValueFactory(new PropertyValueFactory<>("hits"));
+        faultsCol.setCellValueFactory(new PropertyValueFactory<>("faults"));
     }
 
     private void mostrarSesiones() {

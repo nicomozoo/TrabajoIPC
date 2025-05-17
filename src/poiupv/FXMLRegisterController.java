@@ -27,9 +27,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.PasswordField;
@@ -216,6 +218,27 @@ public class FXMLRegisterController implements Initializable {
         validUsername.setValue(Boolean.FALSE);
         validPassword.setValue(Boolean.FALSE);
         validDate.setValue(Boolean.FALSE);
+        
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Registro completo");
+        alert.setHeaderText("REGISTRADO CON ÉXITO");
+        alert.setContentText("Ha sido registrado con éxito en NAVALTEST");
+
+        ImageView icon = new ImageView(new Image(getClass().getResourceAsStream("/resources/tick.png")));
+        icon.setFitHeight(48);
+        icon.setFitWidth(48);
+        alert.setGraphic(icon);  // reemplaza el icono de exclamación
+
+         // 2. 🖋️ Estilo de la ventana
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setStyle("-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-border-radius: 10;");
+
+        dialogPane.lookup(".header-panel").setStyle("-fx-background-color: #A259FF;");
+        dialogPane.lookup(".header-panel .label").setStyle("-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px;");
+
+        dialogPane.lookup(".content.label").setStyle("-fx-text-fill: #333333; -fx-font-size: 15px; -fx-font-weight: bold;");
+
+        alert.showAndWait();
         
         
         try {
