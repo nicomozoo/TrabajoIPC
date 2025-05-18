@@ -96,19 +96,7 @@ public class FXMLPerfilController {
 
     @FXML
     private void handleBotVolver(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml")); // o FXMLMain.fxml
-            Parent root = loader.load();
-            FXMLRegisterController controller = loader.getController();
-            controller.setCurrentUser(currentUser);
-
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Menú principal");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        botVolver.getScene().getWindow().hide();
     }
     
     private void showAlert(String title, String content) {

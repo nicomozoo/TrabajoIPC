@@ -66,7 +66,6 @@ public class FXMLDocumentController implements Initializable {
     private Group zoomGroup;
     private User currentUser;
 
-    @FXML
     private ListView<Poi> map_listview;
     @FXML
     private ScrollPane map_scrollpane;
@@ -114,7 +113,6 @@ public class FXMLDocumentController implements Initializable {
         map_scrollpane.setVvalue(scrollV);
     }
 
-    @FXML
     void listClicked(MouseEvent event) {
         Poi itemSelected = map_listview.getSelectionModel().getSelectedItem();
 
@@ -175,7 +173,6 @@ public class FXMLDocumentController implements Initializable {
         ((Stage) zoom_slider.getScene().getWindow()).close();
     }
 
-    @FXML
     private void about(ActionEvent event) {
         Alert mensaje = new Alert(Alert.AlertType.INFORMATION);
         // Acceder al Stage del Dialog y cambiar el icono
@@ -235,26 +232,29 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleBotCerrarSesion(ActionEvent event) throws NavDAOException, IOException {
     // Obtener el usuario actual
+        if(showAlert("Cerrar Sesión", "¿Estás seguro de que quieres cerrar sesión?")){
         
-        // Simular resultados de sesión (sustituye hits/faults por tus variables reales)
-        int hits = 3;    // o tu contador real
-        int faults = 1;  // o tu contador real
+            int hits = 3;    // o tu contador real
+            int faults = 1;  // o tu contador real
 
-        // Registrar la sesión
-        currentUser.addSession(hits, faults);
+            // Registrar la sesión
+            currentUser.addSession(hits, faults);
 
-        try {
-            // Volver al login
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLLogin.fxml"));
-            Parent root = loader.load();
+            try {
+                // Volver al login
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLInicio.fxml"));
+                Parent root = loader.load();
 
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Inicio de sesión");
-            stage.show();
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
+                Stage stage = (Stage) zoom_slider.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Inicio de sesión");
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else{
+            
+        }
     }
 
     @FXML
@@ -315,6 +315,17 @@ public class FXMLDocumentController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    private boolean showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        
+        
+        Optional<ButtonType> resultado = alert.showAndWait();
+        return resultado.isPresent() && resultado.get() == ButtonType.OK;
     }
     
 }

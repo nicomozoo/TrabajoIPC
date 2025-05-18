@@ -66,22 +66,6 @@ public class FXMLSesionesController implements Initializable{
 
     @FXML
     private void handleBotVolver(ActionEvent event) {
-        try {
-            // Cargar la nueva interfaz
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
-            Parent root = loader.load();
-
-            // Crear una nueva ventana
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Mapa");
-            stage.show();
-
-            // (Opcional) Cerrar la ventana actual
-            // ((Node)(event.getSource())).getScene().getWindow().hide();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        botVolver.getScene().getWindow().hide();
     }
 }

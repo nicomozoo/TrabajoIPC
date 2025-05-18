@@ -4,8 +4,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
@@ -21,22 +19,13 @@
 
 <VBox prefHeight="556.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLDocumentController">
    <children>
-      <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="5.0" VBox.vgrow="NEVER">
+      <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="854.0">
          <children>
-            <MenuBar>
-              <menus>
-                <Menu mnemonicParsing="false" text="Ayuda">
-                  <items>
-                    <MenuItem mnemonicParsing="false" onAction="#about" text="Acerca de" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-            <MenuButton mnemonicParsing="false" text="MenuButton">
+            <MenuButton contentDisplay="RIGHT" mnemonicParsing="false" popupSide="TOP" prefHeight="34.0" prefWidth="44.0">
               <items>
-                <MenuItem mnemonicParsing="false">
+                  <MenuItem mnemonicParsing="false">
                      <graphic>
-                        <Button mnemonicParsing="false" onAction="#handleBotVerSesiones" text="Sesiones" />
+                        <Button mnemonicParsing="false" onAction="#handleBotEditarPerfil" text="Editar Perfil" />
                      </graphic>
                   </MenuItem>
                 <MenuItem mnemonicParsing="false">
@@ -44,13 +33,27 @@
                       <Button fx:id="botCerrarSesion" mnemonicParsing="false" onAction="#handleBotCerrarSesion" text="Cerrar Sesión" />
                      </graphic>
                   </MenuItem>
-                  <MenuItem mnemonicParsing="false">
+                <MenuItem mnemonicParsing="false">
                      <graphic>
-                        <Button mnemonicParsing="false" onAction="#handleBotEditarPerfil" text="Editar Perfil" />
+                        <Button mnemonicParsing="false" onAction="#handleBotVerSesiones" text="Sesiones" />
                      </graphic>
                   </MenuItem>
               </items>
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Downloads/TrabajoIPC-master-nikita/TrabajoIPC-master/src/resources/usuario_icono_morado.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
             </MenuButton>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="5.0" VBox.vgrow="NEVER">
+         <children>
             <Button mnemonicParsing="false" onAction="#preguntasOnAction" text="Preguntas" />
             <Region HBox.hgrow="ALWAYS" />
             <Label text="Zoom" />
