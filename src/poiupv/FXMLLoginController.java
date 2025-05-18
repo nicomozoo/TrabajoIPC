@@ -67,6 +67,7 @@ public class FXMLLoginController {
 
         // Autenticación
         User user = Navigation.getInstance().authenticate(nick, password);
+        
 
         if (user != null) {
             currentUser = user;
@@ -75,8 +76,8 @@ public class FXMLLoginController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
                 Parent root = loader.load();
 
-                // FXMLDocumentController controller = loader.getController();
-                // controller.setCurrentUser(currentUser);
+                FXMLDocumentController controller = loader.getController();
+                controller.setCurrentUser(currentUser);
 
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(new Scene(root));

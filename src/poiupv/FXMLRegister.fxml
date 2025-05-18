@@ -20,7 +20,7 @@
    <children>
       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #A259FF;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 50; -fx-border-radius: 50;">
                <image>
                   <Image url="@../resources/logo%20barco.png" />
                </image>
@@ -59,7 +59,7 @@
                      <children>
                         <Label text="Email:" textFill="#025477" />
                         <TextField fx:id="emailField" minWidth="150.0" prefHeight="26.0" prefWidth="350.0" promptText="yourEmail@domain.com" />
-                        <Label fx:id="emailError" text="Email incorrecto" textFill="#ca0505" />
+                        <Label fx:id="emailError" text="Email incorrecto" textFill="#ca0505" visible="false" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="30.0" />
@@ -75,7 +75,7 @@
                               <Insets right="33.0" top="20.0" />
                            </VBox.margin>
                         </ImageView>
-                        <Button fx:id="botFoto" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleBotFotoOnAction" prefHeight="26.0" prefWidth="185.0" style="-fx-background-color: #A259FF;" text="Foto de perfil" textFill="WHITE">
+                        <Button fx:id="botFoto" graphicTextGap="0.0" mnemonicParsing="false" onAction="#handleBotFotoOnAction" prefHeight="26.0" prefWidth="185.0" style="-fx-background-color: #A259FF; -fx-background-radius: 20;" text="Foto de perfil" textFill="WHITE">
                            <VBox.margin>
                               <Insets left="40.0" right="20.0" top="5.0" />
                            </VBox.margin>
@@ -103,7 +103,7 @@
                            </VBox.margin>
                         </Label>
                         <TextField fx:id="usernameField" prefHeight="26.0" prefWidth="350.0" promptText="LettersNumbersSymbols" />
-                        <Label fx:id="usernameError" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="709.0" text="Entre 6 y 15 caracteres sin espacios, pudiendo usar guiones o sub-guiones" textFill="#ca0505" />
+                        <Label fx:id="usernameError" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="709.0" text="Entre 6 y 15 caracteres sin espacios, pudiendo usar guiones o sub-guiones" textFill="#ca0505" visible="false" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="20.0" left="10.0" />
@@ -117,7 +117,7 @@
                      <children>
                         <Label text="Password" textFill="#025477" />
                         <TextField fx:id="passwordField" maxWidth="351.0" minWidth="80.0" prefHeight="26.0" prefWidth="351.0" promptText="LettersNumbersSymbols" />
-                        <Label fx:id="passwordError" alignment="BOTTOM_LEFT" prefHeight="18.0" prefWidth="642.0" text="Entre 8 y 20 caracteres, al menos una letra en mayúsculas y minúsculas, así como algún dígito y algún carácter especial " textFill="#ca0505" />
+                        <Label fx:id="passwordError" alignment="BOTTOM_LEFT" prefHeight="18.0" prefWidth="642.0" text="Entre 8 y 20 caracteres, al menos una letra en mayúsculas y minúsculas, así como algún dígito y algún carácter especial " textFill="#ca0505" visible="false" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="13.0" left="10.0" />
@@ -132,7 +132,7 @@
                      <children>
                         <Label text="Birthdate" textFill="#025477" />
                         <DatePicker fx:id="birthField" prefHeight="26.0" prefWidth="239.0" />
-                        <Label fx:id="birthError" alignment="BOTTOM_LEFT" prefHeight="42.0" prefWidth="258.0" text="  User must be 16 years old" textFill="#ca0505" />
+                        <Label fx:id="birthError" alignment="BOTTOM_LEFT" prefHeight="42.0" prefWidth="258.0" text="  User must be 16 years old" textFill="#ca0505" visible="false" />
                      </children>
                      <HBox.margin>
                         <Insets left="10.0" />
@@ -142,17 +142,17 @@
             </HBox>
             <HBox alignment="TOP_RIGHT" prefHeight="97.0" prefWidth="650.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
                <children>
-                  <Button fx:id="botAccept" graphicTextGap="7.0" mnemonicParsing="false" onAction="#handleBotAcceptOnAction" prefHeight="30.0" prefWidth="99.0" style="-fx-background-color: #A259FF;" text="Register" textFill="WHITE">
+                  <Button fx:id="botAccept" graphicTextGap="7.0" mnemonicParsing="false" onAction="#handleBotAcceptOnAction" prefHeight="30.0" prefWidth="99.0" style="-fx-background-color: #A259FF; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20;" text="Register" textFill="WHITE">
                      <HBox.margin>
-                        <Insets bottom="20.0" left="15.0" right="15.0" top="20.0" />
+                        <Insets bottom="40.0" left="15.0" right="15.0" top="20.0" />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="botCancel" graphicTextGap="7.0" mnemonicParsing="false" onAction="#handleBotCancel" prefHeight="14.0" prefWidth="99.0" style="-fx-background-color: #A259FF;" text="Cancel" textFill="WHITE">
+                  <Button fx:id="botCancel" graphicTextGap="7.0" mnemonicParsing="false" onAction="#handleBotCancel" prefHeight="14.0" prefWidth="99.0" style="-fx-background-color: #A259FF; -fx-background-radius: 20;" text="Cancel" textFill="WHITE">
                      <HBox.margin>
-                        <Insets bottom="20.0" left="15.0" right="20.0" top="20.0" />
+                        <Insets bottom="25.0" left="15.0" right="20.0" top="20.0" />
                      </HBox.margin>
                      <font>
                         <Font name="System Bold" size="13.0" />
