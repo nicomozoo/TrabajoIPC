@@ -200,9 +200,7 @@ public class FXMLRegisterController implements Initializable {
         Bindings.not(validFields)
         ); 
         
-        botCancel.setOnAction( (event)->{
-            botCancel.getScene().getWindow().hide();
-        });
+       
     }
 
     @FXML
