@@ -234,11 +234,7 @@ public class FXMLDocumentController implements Initializable {
     // Obtener el usuario actual
         if(showAlert("Cerrar Sesión", "¿Estás seguro de que quieres cerrar sesión?")){
         
-            int hits = 3;    // o tu contador real
-            int faults = 1;  // o tu contador real
-
-            // Registrar la sesión
-            currentUser.addSession(hits, faults);
+            
 
             try {
                 // Volver al login

@@ -6,8 +6,12 @@ package poiupv;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,18 +34,16 @@ public class FXMLSesionesController implements Initializable{
 
     @FXML
     private TableView<Session> sessionTable;
-    private TableColumn<Session,String> fechaCol;
-    private TableColumn<Session,Integer> aciertosCol;
-    private TableColumn<Session,Integer> fallosCol;
+
     
     
      private User currentUser;
     @FXML
-    private TableColumn<?, ?> dateCol;
+    private TableColumn<Session, String> dateCol;
     @FXML
-    private TableColumn<?, ?> hitsCol;
+    private TableColumn<Session, Integer> hitsCol;
     @FXML
-    private TableColumn<?, ?> faultsCol;
+    private TableColumn<Session, Integer> faultsCol;
     @FXML
     private Button botVolver;
 
@@ -55,6 +57,12 @@ public class FXMLSesionesController implements Initializable{
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         hitsCol.setCellValueFactory(new PropertyValueFactory<>("hits"));
         faultsCol.setCellValueFactory(new PropertyValueFactory<>("faults"));
+        
+        dateCol.setCellValueFactory(cellData -> {
+        LocalDateTime fecha = cellData.getValue().getTimeStamp();
+        String fechaFormateada = fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        return new SimpleStringProperty(fechaFormateada);
+    });
     }
 
     private void mostrarSesiones() {

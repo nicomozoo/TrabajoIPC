@@ -40,6 +40,10 @@ public class FXMLPreguntasController {
     private User currentUser;
     private ToggleGroup grupoRespuestas = new ToggleGroup();
     private List<Problem> problemasPendientes;
+    
+    public int hits;
+    public int faults;
+
 
     public void setCurrentUser(User user) {
         this.currentUser = user;
@@ -93,6 +97,7 @@ public class FXMLPreguntasController {
         if (actualText.contains("❌")) actualText = actualText.split(" ❌")[0];
 
         if (respuesta.getValidity()) {
+            hits++;
             seleccionada.setText(actualText + " ✅ ¡Correcto! Cargando siguiente...");
             new Thread(() -> {
                 try {
@@ -101,13 +106,15 @@ public class FXMLPreguntasController {
                 javafx.application.Platform.runLater(() -> cargarProblema());
             }).start();
         } else {
+            faults++;
             seleccionada.setText(actualText + " ❌ Incorrecto.");
         }
     }
 
     @FXML
     private void handleVolver(ActionEvent event) {
-        // Obtener el Stage actual desde el botón que disparó el evento
+        currentUser.addSession(hits, faults);
+        
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();  // Cierra esta ventana
     }    
