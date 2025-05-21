@@ -294,13 +294,10 @@ public class FXMLDocumentController implements Initializable {
             FXMLPreguntasListaController controller = loader.getController();
             controller.setCurrentUser(currentUser);
     
-            // Crear un nuevo Stage (ventana)
+            
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.setTitle("Preguntas");
-    
-            // Opcional: si quieres que esta ventana sea modal (bloquea la anterior)
-            // newStage.initModality(Modality.APPLICATION_MODAL);
     
             newStage.show();
     

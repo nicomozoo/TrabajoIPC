@@ -38,7 +38,6 @@ public class FXMLLoginController {
 
     private User currentUser;
     
-     @FXML
     private void initialize() {
         usernameError.setVisible(false);
         passwordError.setVisible(false);
