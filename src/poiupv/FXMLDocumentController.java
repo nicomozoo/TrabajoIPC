@@ -233,9 +233,6 @@ public class FXMLDocumentController implements Initializable {
     private void handleBotCerrarSesion(ActionEvent event) throws NavDAOException, IOException {
     // Obtener el usuario actual
         if(showAlert("Cerrar Sesión", "¿Estás seguro de que quieres cerrar sesión?")){
-        
-            
-
             try {
                 // Volver al login
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLInicio.fxml"));
@@ -292,11 +289,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void preguntasOnAction(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLPreguntas.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLPreguntasLista.fxml"));
             Parent root = loader.load();
-            FXMLPreguntasController controller = loader.getController();
+            FXMLPreguntasListaController controller = loader.getController();
             controller.setCurrentUser(currentUser);
-            controller.cargarProblema();
     
             // Crear un nuevo Stage (ventana)
             Stage newStage = new Stage();

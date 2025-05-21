@@ -11,12 +11,33 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import model.User;
 
 /**
  *
  * @author jose
  */
 public class PoiUPVApp extends Application {
+    
+    public static int fallos;
+    public static int aciertos;
+    private User currentUser;
+    
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
+    }
+    public static void setAciertos(int n){
+        aciertos = n;
+    }
+    public static void setFallos(int n){
+        fallos = n;
+    }
+    public static int getAciertos(){
+        return aciertos;
+    }
+    public static int getFallos(){
+        return fallos;
+    }
     
     @Override
     public void start(Stage stage) throws Exception {

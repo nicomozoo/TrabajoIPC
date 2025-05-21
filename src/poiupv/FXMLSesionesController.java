@@ -11,7 +11,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -46,10 +50,20 @@ public class FXMLSesionesController implements Initializable{
     private TableColumn<Session, Integer> faultsCol;
     @FXML
     private Button botVolver;
+    @FXML
+    private DatePicker datePicker;
+    @FXML
+    private Button botBuscar;
+    
+    private List<Session> todasLasSesiones;
+    private ObservableList<Session> sesionesFiltradas = FXCollections.observableArrayList();
 
     public void setCurrentUser(User user) {
         this.currentUser = user;
         mostrarSesiones();
+        todasLasSesiones = currentUser.getSessions(); 
+        sesionesFiltradas.setAll(todasLasSesiones);   
+        sessionTable.setItems(sesionesFiltradas);
     }
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -75,5 +89,21 @@ public class FXMLSesionesController implements Initializable{
     @FXML
     private void handleBotVolver(ActionEvent event) {
         botVolver.getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void handleBotBuscar(ActionEvent event) {
+         LocalDate desde = datePicker.getValue();
+
+    if (desde != null) {
+        sesionesFiltradas.setAll(
+            todasLasSesiones.stream()
+                .filter(s -> s.getTimeStamp().toLocalDate().isEqual(desde) || s.getTimeStamp().toLocalDate().isAfter(desde))
+                .collect(Collectors.toList())
+        );
+    } else {
+        // Si no hay fecha seleccionada, mostrar todas
+        sesionesFiltradas.setAll(todasLasSesiones);
+    }
     }
 }
