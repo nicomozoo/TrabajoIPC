@@ -44,17 +44,26 @@
                   <Insets bottom="10.0" right="10.0" top="10.0" />
                </HBox.margin>
                <children>
-                  <Button fx:id="select" mnemonicParsing="false" onAction="#select" prefHeight="26.0" prefWidth="87.0" text="Seleccionar">
+                  <Button fx:id="select" mnemonicParsing="false" onAction="#select" prefHeight="26.0" prefWidth="92.0" style="-fx-background-radius: 20; -fx-background-color: #A259FF;" text="Seleccionar" textFill="WHITE">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="random" mnemonicParsing="false" onAction="#random" text="Sorpréndeme">
+                  <Button fx:id="random" mnemonicParsing="false" onAction="#random" style="-fx-background-radius: 20; -fx-background-color: #A259FF;" text="Sorpréndeme" textFill="WHITE">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="cancel" mnemonicParsing="false" onAction="#cancel" prefHeight="26.0" prefWidth="86.0" text="Volver" />
+                  <Button fx:id="cancel" mnemonicParsing="false" onAction="#cancel" prefHeight="26.0" prefWidth="92.0" style="-fx-background-radius: 20; -fx-background-color: #A259FF;" text="Volver" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
                </children>
             </VBox>
          </children>

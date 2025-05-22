@@ -16,12 +16,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox prefHeight="556.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLDocumentController">
    <children>
       <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="854.0">
          <children>
-            <MenuButton contentDisplay="RIGHT" mnemonicParsing="false" popupSide="TOP" prefHeight="34.0" prefWidth="44.0">
+            <MenuButton contentDisplay="RIGHT" mnemonicParsing="false" popupSide="TOP" prefHeight="34.0" prefWidth="44.0" style="-fx-background-color: 0;">
               <items>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
@@ -42,7 +43,7 @@
                <graphic>
                   <ImageView fitHeight="31.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../Downloads/TrabajoIPC-master-nikita/TrabajoIPC-master/src/resources/usuario_icono_morado.png" />
+                        <Image url="@../resources/usuario_icono_morado.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -54,12 +55,21 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="5.0" VBox.vgrow="NEVER">
          <children>
-            <Button mnemonicParsing="false" onAction="#preguntasOnAction" text="Preguntas" />
+            <Button mnemonicParsing="false" onAction="#preguntasOnAction" style="-fx-background-color: #A259FF;" text="Preguntas" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
             <Region HBox.hgrow="ALWAYS" />
             <Label text="Zoom" />
-            <Button mnemonicParsing="false" onAction="#zoomOut" text="-" />
+            <Button mnemonicParsing="false" onAction="#zoomOut" style="-fx-background-color: #A259FF;" text="-" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
             <Slider fx:id="zoom_slider" HBox.hgrow="SOMETIMES" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#zoomIn" text="+" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#zoomIn" style="-fx-background-color: #A259FF;" text="+" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
          </children>
          <VBox.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

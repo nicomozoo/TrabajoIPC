@@ -14,7 +14,6 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLPerfilController">
    <children>
       <VBox layoutX="-5.0" layoutY="-1.0" prefHeight="400.0" prefWidth="607.0">
@@ -29,7 +28,7 @@
                         <Insets bottom="5.0" top="20.0" />
                      </VBox.margin>
                   </ImageView>
-                  <MenuButton fx:id="botFoto" mnemonicParsing="false" onAction="#handleBotFotoOnAction" prefHeight="26.0" prefWidth="145.0" style="-fx-background-color: #A259FF;" text="Cambiar foto de perfil" textFill="WHITE">
+                  <MenuButton fx:id="botFoto" mnemonicParsing="false" onAction="#handleBotFotoOnAction" prefHeight="26.0" prefWidth="145.0" style="-fx-background-color: #A259FF; -fx-background-radius: 20;" text="Cambiar foto de perfil" textFill="WHITE">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Selecciona de tu ordenador" />
                      </items>
@@ -66,7 +65,7 @@
             </VBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="botGuardar" alignment="CENTER" mnemonicParsing="false" onAction="#handleBotGuardar" style="-fx-background-color: #A259FF;" text="Guardar" textFill="WHITE">
+                  <Button fx:id="botGuardar" alignment="CENTER" mnemonicParsing="false" onAction="#handleBotGuardar" style="-fx-background-color: #A259FF; -fx-background-radius: 15;" text="Guardar" textFill="WHITE">
                      <HBox.margin>
                         <Insets right="50.0" />
                      </HBox.margin>
@@ -74,7 +73,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="botVolver" mnemonicParsing="false" onAction="#handleBotVolver" style="-fx-background-color: #A259FF;" text="Volver" textFill="WHITE">
+                  <Button fx:id="botVolver" mnemonicParsing="false" onAction="#handleBotVolver" style="-fx-background-color: #A259FF; -fx-background-radius: 15;" text=" Volver " textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

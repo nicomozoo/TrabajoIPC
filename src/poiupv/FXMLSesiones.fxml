@@ -6,28 +6,33 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: linear-gradient(to bottom, #f2f2f2, #e6e6e6);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLSesionesController">
-
-    <children>
-
-        <!-- Título -->
-        <Label layoutX="30.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-text-fill: #333333; -fx-font-weight: bold;" text="Historial de Sesiones" />
-
-        <!-- Tabla de sesiones -->
-        <TableView fx:id="sessionTable" layoutX="30.0" layoutY="70.0" prefHeight="350.0" prefWidth="640.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, #aaaaaa, 8, 0.3, 2, 2);">
-
-            <columns>
-                <TableColumn fx:id="dateCol" prefWidth="240.0" text="Fecha" />
-                <TableColumn fx:id="hitsCol" prefWidth="200.0" text="Aciertos" />
-                <TableColumn fx:id="faultsCol" prefWidth="200.0" text="Errores" />
-            </columns>
-        </TableView>
-
-        <!-- Botón Volver -->
-        <Button fx:id="botVolver" layoutX="580.0" layoutY="440.0" onAction="#handleBotVolver" prefWidth="90.0" style="-fx-background-color: #A259FF; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20;" text="Volver" />
-      <DatePicker fx:id="datePicker" layoutX="30.0" layoutY="440.0" promptText="Historial desde..." />
-      <Button fx:id="botBuscar" layoutX="129.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleBotBuscar" text="Buscar" />
-
-    </children>
-</AnchorPane>
+<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLSesionesController">
+   <children>
+      <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: linear-gradient(to bottom, #f2f2f2, #e6e6e6);">
+      
+          <children>
+      
+              <!-- Título -->
+              <Label layoutX="30.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-text-fill: #333333; -fx-font-weight: bold;" text="Historial de Sesiones" />
+      
+              <!-- Tabla de sesiones -->
+              <TableView fx:id="sessionTable" layoutX="30.0" layoutY="70.0" prefHeight="350.0" prefWidth="640.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, #aaaaaa, 8, 0.3, 2, 2);">
+      
+                  <columns>
+                      <TableColumn fx:id="dateCol" prefWidth="240.0" text="Fecha" />
+                      <TableColumn fx:id="hitsCol" prefWidth="200.0" text="Aciertos" />
+                      <TableColumn fx:id="faultsCol" prefWidth="200.0" text="Errores" />
+                  </columns>
+              </TableView>
+      
+              <!-- Botón Volver -->
+              <Button fx:id="botVolver" layoutX="580.0" layoutY="440.0" onAction="#handleBotVolver" prefWidth="90.0" style="-fx-background-color: #A259FF; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20;" text="Volver" />
+            <DatePicker fx:id="datePicker" layoutX="30.0" layoutY="440.0" promptText="Historial desde..." style="-fx-background-color: #A259FF;" />
+            <Button fx:id="botBuscar" layoutX="127.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleBotBuscar" prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: 0; -fx-border-color: #A259FF; -fx-border-width: 1;" text="Buscar" />
+      
+          </children>
+      </AnchorPane>
+   </children>
+</StackPane>
