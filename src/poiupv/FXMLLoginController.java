@@ -16,6 +16,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.NavDAOException;
 import model.Navigation;
@@ -37,6 +39,10 @@ public class FXMLLoginController {
     private Label passwordError;
 
     private User currentUser;
+    @FXML
+    private ImageView imagenFondo;
+    @FXML
+    private StackPane stackPane;
     
     private void initialize() {
         usernameError.setVisible(false);
@@ -44,6 +50,9 @@ public class FXMLLoginController {
 
         usernameField.setOnKeyTyped(e -> usernameError.setVisible(false));
         passwordField.setOnKeyTyped(e -> passwordError.setVisible(false));
+        
+        imagenFondo.fitWidthProperty().bind(stackPane.widthProperty());
+        imagenFondo.fitHeightProperty().bind(stackPane.heightProperty());
     }
 
     @FXML

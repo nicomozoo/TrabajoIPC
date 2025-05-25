@@ -16,11 +16,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane prefHeight="445.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLLoginController">
+<StackPane fx:id="stackPane" style="-fx-background-color: #ebffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLLoginController">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="570.0" style="-fx-border-color: #A259FF; -fx-border-width: 5; -fx-background-color: #ddc3ff; -fx-border-radius: 20; -fx-padding: 20;">
+      <ImageView fx:id="imagenFondo" fitHeight="535.0" fitWidth="717.0" pickOnBounds="true" StackPane.alignment="CENTER">
+         <image>
+            <Image url="@../resources/fondo%20degradado%20con%20olas.png" />
+         </image>
+      </ImageView>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="570.0" style="-fx-border-color: #3ab7aa; -fx-border-width: 5; -fx-background-color: #e3f9fa; -fx-border-radius: 20; -fx-padding: 20;">
          <children>
-            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="570.0" style="-fx-background-color: #A259FF; -fx-border-radius: 20;">
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="570.0" style="-fx-background-color: #3ab7aa; -fx-border-radius: 20;">
                <children>
                   <ImageView fitHeight="70.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -81,7 +86,7 @@
                   </VBox>
                   <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <Button alignment="CENTER" graphicTextGap="7.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="30.0" prefWidth="99.0" style="-fx-background-color: #A259FF; -fx-background-radius: 20;" text="Entrar" textFill="WHITE">
+                        <Button alignment="CENTER" graphicTextGap="7.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="30.0" prefWidth="99.0" style="-fx-background-color: #3ab7aa; -fx-background-radius: 20;" text="Entrar" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
@@ -91,7 +96,7 @@
                         </Button>
                      </children>
                   </VBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A259FF; -fx-border-width: 20;" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #3ab7aa; -fx-border-width: 20;" GridPane.columnSpan="2" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="4.0" right="32.0" />
                      </GridPane.margin>

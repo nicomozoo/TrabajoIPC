@@ -19,32 +19,52 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="556.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLDocumentController">
+<VBox prefHeight="556.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLDocumentController">
    <children>
       <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="854.0">
          <children>
-            <MenuButton contentDisplay="RIGHT" mnemonicParsing="false" popupSide="TOP" prefHeight="34.0" prefWidth="44.0" style="-fx-background-color: 0;">
+            <Label prefHeight="27.0" prefWidth="102.0" text="NAVALTEST" textFill="#3ab7aa">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="670.0" />
+               </HBox.margin>
+            </Label>
+            <MenuButton contentDisplay="RIGHT" mnemonicParsing="false" popupSide="TOP" prefHeight="34.0" prefWidth="44.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #3ab7aa;">
               <items>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
-                        <Button mnemonicParsing="false" onAction="#handleBotEditarPerfil" text="Editar Perfil" />
+                        <Button mnemonicParsing="false" onAction="#handleBotEditarPerfil" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: #3ab7aa; -fx-background-radius: 20;" text="Editar Perfil" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
                      </graphic>
                   </MenuItem>
                 <MenuItem mnemonicParsing="false">
                      <graphic>
-                      <Button fx:id="botCerrarSesion" mnemonicParsing="false" onAction="#handleBotCerrarSesion" text="Cerrar Sesión" />
+                      <Button fx:id="botCerrarSesion" mnemonicParsing="false" onAction="#handleBotCerrarSesion" style="-fx-background-color: #3ab7aa; -fx-background-radius: 20;" text="Cerrar Sesión" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
                      </graphic>
                   </MenuItem>
                 <MenuItem mnemonicParsing="false">
                      <graphic>
-                        <Button mnemonicParsing="false" onAction="#handleBotVerSesiones" text="Sesiones" />
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleBotVerSesiones" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: #3ab7aa; -fx-background-radius: 20;" text="Sesiones" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
                      </graphic>
                   </MenuItem>
               </items>
                <graphic>
                   <ImageView fitHeight="31.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/usuario_icono_morado.png" />
+                        <Image url="@../resources/Usuario_azul.jpg" />
                      </image>
                   </ImageView>
                </graphic>
@@ -56,18 +76,18 @@
       </HBox>
       <HBox alignment="CENTER_RIGHT" fillHeight="false" spacing="5.0" VBox.vgrow="NEVER">
          <children>
-            <Button mnemonicParsing="false" onAction="#preguntasOnAction" style="-fx-background-color: #A259FF;" text="Preguntas" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#preguntasOnAction" style="-fx-background-color: #3ab7aa;" text="Preguntas" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
             <Region HBox.hgrow="ALWAYS" />
             <Label text="Zoom" />
-            <Button mnemonicParsing="false" onAction="#zoomOut" style="-fx-background-color: #A259FF;" text="-" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#zoomOut" style="-fx-background-color: #3ab7aa;" text="-" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
             <Slider fx:id="zoom_slider" HBox.hgrow="SOMETIMES" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#zoomIn" style="-fx-background-color: #A259FF;" text="+" textFill="WHITE">
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#zoomIn" style="-fx-background-color: #3ab7aa;" text="+" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>

@@ -1,55 +1,74 @@
+/*
+ * Copyright (c) 2014, Oracle and/or its affiliates.
+ * All rights reserved. Use is subject to license terms.
+ *
+ * This file is available and licensed under the following license:
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ *  - Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *  - Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the distribution.
+ *  - Neither the name of Oracle Corporation nor the names of its
+ *    contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 
-/* Fondo general */
-.root {
-    -fx-background-color: #f9f9f9;
+/*******************************************************************************
+ *                                                                             *
+ * Embedded Styling                                                            *
+ *                                                                             *
+ ******************************************************************************/
+
+
+
+/*******************************************************************************
+ *                                                                             *
+ * High Contrast Theme                                                         *
+ *                                                                             *
+ ******************************************************************************/
+
+.contrast {
+    -app-color-hi: #5bf900;
+    -app-color-lo: black;
+    -app-hover: #666666;
+    -fx-background-color: -app-color-lo;
 }
 
-/* Título principal */
-.text {
-    -fx-font-size: 32px;
-    -fx-font-weight: bold;
-    -fx-fill: #4a4a4a;
+/*-------------------------- map pin ------------------------- */
+
+.map-pin {
+    -fx-shape: "M13.558,0C6.07,0,0,6.07,0,13.558s13.558,22.346,13.558,22.346s13.558-14.858,13.558-22.346S21.045,0,13.558,0z
+M13.558,20.762c-4.084,0-7.395-3.311-7.395-7.395s3.311-7.395,7.395-7.395c4.084,0,7.396,3.311,7.396,7.395
+S17.642,20.762,13.558,20.762z";    
+    -fx-background-color: black, white;
+    -fx-background-insets: 0, 2;
+    -fx-effect: dropshadow( two-pass-box, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 10 );
+    -fx-pref-width: 48;
+    -fx-pref-height: 60;
+}
+.map-pin .arrow-button .arrow {
+    -fx-padding: 0;
+}
+.boton-activo {
+    -fx-background-color: #cce5ff; /* azul clarito como 'pressed' */
+    -fx-border-color: #3399ff;
+    -fx-border-width: 2;
 }
 
-/* Etiquetas (Label) */
-.label {
-    -fx-text-fill: #333333;
-    -fx-font-size: 14px;
-}
-
-/* Campos de texto */
-.text-field,
-.date-picker {
-    -fx-background-color: white;
-    -fx-border-color: #ccc;
-    -fx-border-radius: 6;
-    -fx-background-radius: 6;
-    -fx-padding: 6 10 6 10;
-    -fx-font-size: 13px;
-}
-
-/* Campos con error (puedes aplicarlo dinámicamente) */
-.error {
-    -fx-border-color: #ca0505;
-    -fx-background-color: #fce5e0;
-}
-
-/* Botones generales */
-.button {
-    -fx-background-color: #A259FF;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 10;
-    -fx-padding: 8 16;
-    -fx-font-size: 13px;
-}
-
-/* Botón secundario (ej: cancelar) */
-.button.cancel {
-    -fx-background-color: #bbb;
-}
-
-/* Imagen redonda opcional (para ImageView con clip en controlador) */
-.image-view {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.2, 0, 2);
-}

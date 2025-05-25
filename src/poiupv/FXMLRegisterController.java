@@ -38,6 +38,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.NavDAOException;
@@ -87,6 +89,12 @@ public class FXMLRegisterController implements Initializable {
     private Button botFoto;
     @FXML
     private ImageView imagenFotoPerfil;
+    @FXML
+    private Pane pane;
+    @FXML
+    private ImageView imagenFondo;
+    @FXML
+    private VBox VBox;
 
     
     private void checkEmail() {
@@ -127,7 +135,12 @@ public class FXMLRegisterController implements Initializable {
     // you must initialize here all related with the object 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
+        imagenFondo.fitWidthProperty().bind(pane.widthProperty());
+        imagenFondo.fitHeightProperty().bind(pane.heightProperty());
+        
+        
+        
         validEmail = new SimpleBooleanProperty(false);
         
         validUsername = new SimpleBooleanProperty(false);
