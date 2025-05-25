@@ -29,6 +29,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -43,6 +44,8 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.NavDAOException;
@@ -65,6 +68,10 @@ public class FXMLDocumentController implements Initializable {
     // el escalado se realiza sobre este nodo, al escalar el Group no mueve sus nodos
     private Group zoomGroup;
     private User currentUser;
+    private Line linePainting;
+    private Circle circlePainting;
+    private double startXArc;
+    private double startYArc;
 
     private ListView<Poi> map_listview;
     @FXML
@@ -81,6 +88,11 @@ public class FXMLDocumentController implements Initializable {
     private Label mousePosition;
     @FXML
     private Button botCerrarSesion;
+    @FXML
+    private Button butClear;
+    @FXML
+    private ComboBox<?> fontSizeBox;
+    private int currentFontSize = 14;
 
     @FXML
     void zoomIn(ActionEvent event) {
@@ -315,6 +327,14 @@ public class FXMLDocumentController implements Initializable {
         
         Optional<ButtonType> resultado = alert.showAndWait();
         return resultado.isPresent() && resultado.get() == ButtonType.OK;
+    }
+
+    @FXML
+    private void handleClearAll(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleFontSizeChange(ActionEvent event) {
     }
     
 }
