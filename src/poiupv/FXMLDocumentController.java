@@ -29,7 +29,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -44,6 +46,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
@@ -67,11 +70,12 @@ public class FXMLDocumentController implements Initializable {
     // la variable zoomGroup se utiliza para dar soporte al zoom
     // el escalado se realiza sobre este nodo, al escalar el Group no mueve sus nodos
     private Group zoomGroup;
+    private Group drawGroup;
     private User currentUser;
     private Line linePainting;
     private Circle circlePainting;
-    private double startXArc;
-    private double startYArc;
+    private double inicioXArc;
+    private double inicioYArc;
 
     private ListView<Poi> map_listview;
     @FXML
@@ -91,8 +95,23 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button butClear;
     @FXML
-    private ComboBox<?> fontSizeBox;
-    private int currentFontSize = 14;
+    private ComboBox<Integer> fontSizeBox;
+    private int currentFontSize = 2;
+    @FXML
+    private Button buttonArco;
+    @FXML
+    private Button buttonLine;
+    @FXML
+    private ColorPicker colorPicker;
+    
+    @FXML
+    private void selectLineTool() {
+        currentTool = Tool.LINE;
+    }
+    @FXML
+    private void selectCircleTool() {
+        currentTool = Tool.CIRCLE;
+    }  
 
     @FXML
     void zoomIn(ActionEvent event) {
@@ -149,6 +168,21 @@ public class FXMLDocumentController implements Initializable {
         map_pin.setVisible(true);
     }
 
+    @FXML
+    private void handleColorChange(ActionEvent event) {
+    }
+    
+    private enum Tool {
+    LINE, CIRCLE
+    }
+    
+    private void handleColorChange() {
+        currentColor = colorPicker.getValue();
+    }
+    
+    private Tool currentTool = Tool.LINE;
+    private Color currentColor = Color.BLACK;
+
     private void initData() {
         
     }
@@ -172,8 +206,91 @@ public class FXMLDocumentController implements Initializable {
         contentGroup.getChildren().add(zoomGroup);
         zoomGroup.getChildren().add(map_scrollpane.getContent());
         map_scrollpane.setContent(contentGroup);
+        
+        //Inicializamos manejadores
+        zoomGroup.setOnMousePressed(this::onMousePressed);
+        zoomGroup.setOnMouseDragged(this::onMouseDragged);
+        
+        fontSizeBox.getItems().addAll(2, 4, 6, 8, 10, 12, 14, 18, 24, 36);
+        fontSizeBox.setValue(currentFontSize);
 
     }
+    
+    @FXML
+    private void handleFontSizeChange() {
+        Integer selectedSize = fontSizeBox.getValue();
+        if (selectedSize != null) {
+            currentFontSize = selectedSize;
+        }
+    }
+    
+    @FXML
+    private void handleClearAll() { 
+        zoomGroup.getChildren().removeIf(node ->
+                node instanceof Line ||
+                node instanceof Circle);
+    }
+    
+    
+    private void onMousePressed(MouseEvent e) {
+    switch (currentTool) {
+        case LINE -> {
+            linePainting = new Line();
+            linePainting.setStartX(e.getX());
+            linePainting.setStartY(e.getY());
+            linePainting.setEndX(e.getX());
+            linePainting.setEndY(e.getY());
+            linePainting.setStrokeWidth(currentFontSize);
+            linePainting.setStroke(colorPicker.getValue());
+            addContextMenuToLine(linePainting);
+            zoomGroup.getChildren().add(linePainting);
+        }
+        case CIRCLE -> {
+            circlePainting = new Circle(1);
+            circlePainting.setStroke(colorPicker.getValue());
+            circlePainting.setFill(Color.TRANSPARENT);
+            circlePainting.setCenterX(e.getX());
+            circlePainting.setCenterY(e.getY());
+            inicioXArc = e.getX();
+            circlePainting.setStrokeWidth(currentFontSize);
+            //addContextMenuToCircle(circlePainting);
+            zoomGroup.getChildren().add(circlePainting);
+        }
+    }
+}
+    
+    private void onMouseDragged(MouseEvent e) {
+    switch (currentTool) {
+        case LINE -> {
+            if (linePainting != null) {
+                linePainting.setEndX(e.getX());
+                linePainting.setEndY(e.getY());
+            }
+        }
+        case CIRCLE -> {
+            if (circlePainting != null) {
+                double radius = Math.abs(e.getX() - inicioXArc);
+                circlePainting.setRadius(radius);
+            }
+        }
+    }
+     e.consume();
+    }
+    
+    private void addContextMenuToLine(Line line) {
+    line.setOnContextMenuRequested(e -> {
+        ContextMenu contextMenu = new ContextMenu();
+        MenuItem eliminar = new MenuItem("Eliminar línea");
+
+        eliminar.setOnAction(ev -> {
+            zoomGroup.getChildren().remove(line);
+        });
+
+        contextMenu.getItems().add(eliminar);
+        contextMenu.show(line, e.getScreenX(), e.getScreenY());
+        e.consume();
+    });
+}
 
     @FXML
     private void showPosition(MouseEvent event) {
@@ -329,12 +446,5 @@ public class FXMLDocumentController implements Initializable {
         return resultado.isPresent() && resultado.get() == ButtonType.OK;
     }
 
-    @FXML
-    private void handleClearAll(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleFontSizeChange(ActionEvent event) {
-    }
     
 }

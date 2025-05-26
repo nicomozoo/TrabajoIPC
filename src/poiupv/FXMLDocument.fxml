@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
@@ -19,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="556.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLDocumentController">
+<VBox prefHeight="556.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLDocumentController">
    <children>
       <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="854.0">
          <children>
@@ -98,7 +99,10 @@
       </HBox>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
          <items>
+            <Button fx:id="buttonLine" mnemonicParsing="false" onAction="#selectLineTool" text="Linea" />
+            <Button fx:id="buttonArco" mnemonicParsing="false" onAction="#selectCircleTool" text="Arco" />
             <Button fx:id="butClear" mnemonicParsing="false" onAction="#handleClearAll" text="Eliminar" />
+            <ColorPicker fx:id="colorPicker" onAction="#handleColorChange" prefHeight="25.0" prefWidth="47.0" />
             <ComboBox fx:id="fontSizeBox" onAction="#handleFontSizeChange" prefHeight="25.0" prefWidth="56.0" promptText="14" />
          </items></ToolBar>
       <SplitPane fx:id="splitPane" VBox.vgrow="ALWAYS">
