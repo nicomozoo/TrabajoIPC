@@ -220,6 +220,22 @@ public class FXMLRegisterController implements Initializable {
     private void handleBotAcceptOnAction(ActionEvent event) throws NavDAOException {
         User user = Navigation.getInstance().registerUser(usernameField.getText(), emailField.getText(), passwordField.getText(), imagenFotoPerfil.getImage(), birthField.getValue());
         
+        try {
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLConfirmRegister.fxml"));
+            Parent root = loader.load();
+
+            
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Register Confirmado");
+            stage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
         emailField.clear();
         usernameField.clear();
         passwordField.clear();
@@ -230,43 +246,10 @@ public class FXMLRegisterController implements Initializable {
         validPassword.setValue(Boolean.FALSE);
         validDate.setValue(Boolean.FALSE);
         
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Registro completo");
-        alert.setHeaderText("REGISTRADO CON ÉXITO");
-        alert.setContentText("Ha sido registrado con éxito en NAVALTEST");
-
-        ImageView icon = new ImageView(new Image(getClass().getResourceAsStream("/resources/tick.png")));
-        icon.setFitHeight(48);
-        icon.setFitWidth(48);
-        alert.setGraphic(icon);  // reemplaza el icono de exclamación
-
-         // 2. 🖋️ Estilo de la ventana
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.setStyle("-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-border-radius: 10;");
-
-        dialogPane.lookup(".header-panel").setStyle("-fx-background-color: #A259FF;");
-        dialogPane.lookup(".header-panel .label").setStyle("-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 18px;");
-
-        dialogPane.lookup(".content.label").setStyle("-fx-text-fill: #333333; -fx-font-size: 15px; -fx-font-weight: bold;");
-
-        alert.showAndWait();
         
         
-        try {
-            
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLConfirmRegister.fxml"));
-            Parent root = loader.load();
-
-            
-            Stage stage = (Stage) pane.getScene().getWindow();;
-            stage.setScene(new Scene(root));
-            stage.setTitle("Register Confirmado");
-            stage.show();
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        
+        
     }
 
     @FXML

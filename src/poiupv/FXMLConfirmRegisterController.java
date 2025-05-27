@@ -19,9 +19,8 @@ public class FXMLConfirmRegisterController {
     @FXML
     private Button botOk;
     
+    @FXML
     private void handleBotOkOnAction(ActionEvent event) {
-    // Obtener la ventana actual y ocultarla (no la destruye)
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.hide();
+    ((Stage)(((Node)event.getSource()).getScene().getWindow())).close();
 }
 }
