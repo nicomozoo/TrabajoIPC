@@ -253,18 +253,16 @@ public class FXMLRegisterController implements Initializable {
         
         
         try {
-            // Cargar la nueva interfaz
+            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLConfirmRegister.fxml"));
             Parent root = loader.load();
 
-            // Crear una nueva ventana
-            Stage stage = new Stage();
+            
+            Stage stage = (Stage) pane.getScene().getWindow();;
             stage.setScene(new Scene(root));
             stage.setTitle("Register Confirmado");
             stage.show();
 
-            // (Opcional) Cerrar la ventana actual
-            // ((Node)(event.getSource())).getScene().getWindow().hide();
 
         } catch (IOException e) {
             e.printStackTrace();
