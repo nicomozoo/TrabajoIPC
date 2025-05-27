@@ -31,11 +31,17 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.Toggle;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 public class FXMLPreguntasController implements Initializable {
@@ -45,10 +51,14 @@ public class FXMLPreguntasController implements Initializable {
 
     @FXML
     public VBox respuestas;
+    
+    @FXML
+    public Button comprobar, volver;
 
     private User currentUser;
     private ToggleGroup grupoRespuestas = new ToggleGroup();
     private List<Problem> problemasPendientes;
+    private boolean randomMode;
     
     public int hits;
     public int faults;
@@ -60,6 +70,10 @@ public class FXMLPreguntasController implements Initializable {
 
     public void setCurrentUser(User user) {
         this.currentUser = user;
+    }
+    
+    public void setRandomMode(boolean b) {
+        this.randomMode = b;
     }
     
     public void cargarProblema(int index) {
@@ -100,38 +114,66 @@ public class FXMLPreguntasController implements Initializable {
         }
 
         Answer respuesta = (Answer) seleccionada.getUserData();
-        String actualText = seleccionada.getText();
+        comprobar.setDisable(true);
+        if (randomMode) volver.setDisable(true);
 
-        // Limpiar posibles marcas anteriores
-        if (actualText.contains("✅")) actualText = actualText.split(" ✅")[0];
-        if (actualText.contains("❌")) actualText = actualText.split(" ❌")[0];
-
-        // Verificación y actualización del texto
-        if (respuesta.getValidity()) {
-            PoiUPVApp.setAciertos(PoiUPVApp.getAciertos()+1);
-            seleccionada.setText(actualText + " ✅ ¡Correcto!");
-        } else {
-            PoiUPVApp.setFallos(PoiUPVApp.getFallos()+1);
-            seleccionada.setText(actualText + " ❌ Incorrecto");
+        // Colorear respuestas según validez
+        for (Toggle t : grupoRespuestas.getToggles()) {
+            RadioButton b = (RadioButton) t;
+            boolean esCorrecta = ((Answer) b.getUserData()).getValidity();
+            b.setTextFill(Paint.valueOf(esCorrecta ? "GREEN" : "RED"));
+            b.setDisable(true);
         }
 
-        PauseTransition pausa = new PauseTransition(Duration.seconds(1));
-        pausa.setOnFinished(e -> cargarProblema(index + 1));
-        pausa.play();
+        // Mostrar mensaje de resultado
+        boolean esCorrecta = respuesta.getValidity();
+        if (esCorrecta) {
+            PoiUPVApp.setAciertos(PoiUPVApp.getAciertos() + 1);
+            question.setTextFill(Paint.valueOf("GREEN"));
+            question.setText("¡RESPUESTA CORRECTA! " + (randomMode ? "Próxima pregunta en 3..." : ""));
+        } else {
+            PoiUPVApp.setFallos(PoiUPVApp.getFallos() + 1);
+            question.setTextFill(Paint.valueOf("RED"));
+            question.setText("¡RESPUESTA INCORRECTA! " + (randomMode ? "Próxima pregunta en 3..." : ""));
+        }
+        question.setFont(new Font(40));
+
+        if (randomMode) {
+            final int[] segundos = {3};
+            Timeline countdown = new Timeline(
+                new KeyFrame(Duration.seconds(1), e -> {
+                    segundos[0]--;
+                    if (segundos[0] > 0 && randomMode) {
+                        question.setText((esCorrecta ? "¡RESPUESTA CORRECTA!" : "¡RESPUESTA INCORRECTA!") + " Próxima pregunta en " + segundos[0] + "...");
+                    } else {
+                        question.setTextFill(Paint.valueOf("BLACK"));
+                        question.setFont(new Font(12));
+                        cargarProblema(index + 1);
+                        comprobar.setDisable(false);
+                        volver.setDisable(false);
+                    }
+                })
+            );
+            countdown.setCycleCount(3); 
+            countdown.play();
+        }
     }
 
+
     @FXML
-    private void handleVolver(ActionEvent event) throws IOException {
-        
-        
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLPreguntasLista.fxml"));
-        Parent root = loader.load();
-    
-        stage.setScene(new Scene(root));
-        stage.setTitle("Preguntas");
-        FXMLPreguntasListaController controller = loader.getController();
-        controller.setCurrentUser(currentUser);
+    private void handleVolver(ActionEvent event) {
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLPreguntasLista.fxml"));
+            Parent root = loader.load();
+            
+            stage.setScene(new Scene(root));
+            stage.setTitle("Preguntas");
+            FXMLPreguntasListaController controller = loader.getController();
+            controller.setCurrentUser(currentUser);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLPreguntasController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
 
     @Override

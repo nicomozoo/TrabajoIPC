@@ -3,83 +3,84 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLPreguntasController">
+<StackPane fx:id="stackPane" style="-fx-background-color: #ebffff;" stylesheets="@../resources/preguntas.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLPreguntasController">
    <children>
-      <VBox>
+      <ImageView fx:id="imagenFondo" fitHeight="535.0" fitWidth="717.0" pickOnBounds="true" StackPane.alignment="CENTER">
+         <image>
+            <Image url="@../resources/fondo%20degradado%20con%20olas.png" />
+         </image>
+      </ImageView>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="570.0" style="-fx-border-color: #3ab7aa; -fx-border-width: 5; -fx-background-color: #3ab7aa; -fx-padding: 20;">
          <children>
-            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #A259FF;">
+            <VBox layoutX="5.0" layoutY="4.0" prefHeight="390.0" prefWidth="560.0" style="-fx-background-color: #FFFFFF; -fx-alignment: center;">
                <children>
-                  <ImageView fitHeight="70.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/logo%20barco.png" />
-                     </image>
-                  </ImageView>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pregunta" wrappingWidth="389.58929693698883">
-                     <font>
-                        <Font name="DejaVu Sans Bold" size="38.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="93.0" top="10.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-               </padding>
-            </HBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="560.0" style="-fx-background-color: #3ab7aa; -fx-border-radius: 20;">
                      <children>
-                        <VBox prefHeight="101.0" prefWidth="549.0">
+                        <ImageView fitHeight="70.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/logo_barco_circular%20(1).png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pregunta" wrappingWidth="389.58929693698883">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="38.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="93.0" top="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <GridPane prefHeight="301.0" prefWidth="560.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="182.199951171875" minWidth="0.0" prefWidth="0.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="542.8" minWidth="10.0" prefWidth="542.8" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.199951171875" minWidth="0.0" prefWidth="0.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="134.40000762939454" minHeight="10.0" prefHeight="134.40000762939454" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="200.80000000000004" minHeight="10.0" prefHeight="127.19999237060549" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="95.60001220703128" minHeight="0.0" prefHeight="37.79998779296875" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="question" alignment="CENTER" contentDisplay="CENTER" prefHeight="138.0" prefWidth="543.0" style="-fx-alignment: center;" text="PREGUNTA" textAlignment="CENTER" GridPane.columnIndex="1" />
+                        <VBox fx:id="respuestas" prefHeight="88.0" prefWidth="473.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <HBox alignment="CENTER" spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
-                              <Label fx:id="question" text="Label" />
-                              <Separator prefWidth="300.0">
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" top="5.0" />
-                                 </VBox.margin>
-                              </Separator>
-                              <VBox fx:id="respuestas" prefHeight="200.0" prefWidth="100.0" />
+                              <Button fx:id="comprobar" mnemonicParsing="false" onAction="#handleComprobar" prefWidth="100.0" style="-fx-background-color: #3ab7aa; -fx-background-radius: 20;" styleClass="button-check" stylesheets="@../resources/preguntas.css" text="Comprobar" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="volver" mnemonicParsing="false" onAction="#handleVolver" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #3ab7aa; -fx-background-radius: 20;" styleClass="button-back" text="Volver" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Button>
                            </children>
-                        </VBox>
+                        </HBox>
                      </children>
-                     <VBox.margin>
-                        <Insets left="25.0" top="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox alignment="TOP_RIGHT" prefHeight="97.0" prefWidth="650.0">
-                     <children>
-                        <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#handleComprobar" prefHeight="30.0" prefWidth="99.0" style="-fx-background-color: #A259FF; -fx-background-radius: 20;" text="Comprobar" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets bottom="20.0" left="15.0" right="15.0" top="20.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Button>
-                        <Button graphicTextGap="7.0" mnemonicParsing="false" onAction="#handleVolver" prefHeight="14.0" prefWidth="99.0" style="-fx-background-color: #A259FF; -fx-background-radius: 20;" text="Volver" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets bottom="20.0" left="15.0" right="20.0" top="20.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </HBox>
+                  </GridPane>
                </children>
             </VBox>
          </children>
-      </VBox>
+         <opaqueInsets>
+            <Insets top="20.0" />
+         </opaqueInsets>
+      </AnchorPane>
    </children>
 </StackPane>

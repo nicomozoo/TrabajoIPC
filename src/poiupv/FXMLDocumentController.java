@@ -423,7 +423,6 @@ public class FXMLDocumentController implements Initializable {
             FXMLPreguntasListaController controller = loader.getController();
             controller.setCurrentUser(currentUser);
     
-            
             Stage newStage = new Stage();
             newStage.setScene(new Scene(root));
             newStage.setTitle("Preguntas");

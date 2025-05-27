@@ -1,0 +1,40 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 26 may 2025, 20:04:59
+    Author     : david
+*/
+
+
+/* Mejora visual para botones sin romper estilos inline */
+.button-check, .button-back {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.1, 0, 2);
+}
+
+/* Si quieres que las respuestas (RadioButtons) estén más estilizadas */
+.radio-button {
+    -fx-padding: 6 0 6 0;
+}
+
+/* Opcional: animación sutil en hover para botones de acción */
+.button-check:hover, .button-back:hover {
+    -fx-background-color: #34a29c;
+}
+
+/* Pregunta centrada y con buen tamaño, sin tocar otras Labels */
+#question {
+    -fx-font-size: 12px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-wrap-text: true;
+}
+
+#respuestas {
+    -fx-font-size: 12px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-wrap-text: true;
+}
