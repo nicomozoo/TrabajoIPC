@@ -42,6 +42,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -49,6 +50,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.NavDAOException;
@@ -103,6 +106,8 @@ public class FXMLDocumentController implements Initializable {
     private Button buttonLine;
     @FXML
     private ColorPicker colorPicker;
+    @FXML
+    private Button buttonText;
     
     @FXML
     private void selectLineTool() {
@@ -173,7 +178,7 @@ public class FXMLDocumentController implements Initializable {
     }
     
     private enum Tool {
-    LINE, CIRCLE
+    LINE, CIRCLE, TEXT
     }
     
     private void handleColorChange() {
@@ -185,6 +190,11 @@ public class FXMLDocumentController implements Initializable {
 
     private void initData() {
         
+    }
+    
+    @FXML
+    private void selectTextTool() {
+        currentTool = Tool.TEXT;
     }
 
     @Override
@@ -256,6 +266,23 @@ public class FXMLDocumentController implements Initializable {
             //addContextMenuToCircle(circlePainting);
             zoomGroup.getChildren().add(circlePainting);
         }
+        case TEXT -> {
+            Text textNode = new Text(e.getX(), e.getY(), "");
+            int size = fontSizeBox.getValue();
+            Color color = colorPicker.getValue();
+            textNode.setFont(new Font(size));
+            textNode.setFill(color);
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("Agregar nota");
+            dialog.setHeaderText("Introduce el texto de la nota:");
+            Optional<String> result = dialog.showAndWait();
+            result.ifPresent(inputText -> {
+            textNode.setText(inputText);
+            //addContextMenuToText(textNode);
+            zoomGroup.getChildren().add(textNode);
+            });
+        }
+
     }
 }
     

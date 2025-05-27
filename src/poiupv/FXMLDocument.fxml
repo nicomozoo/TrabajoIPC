@@ -18,6 +18,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="556.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poiupv.FXMLDocumentController">
@@ -101,8 +102,12 @@
          <items>
             <Button fx:id="buttonLine" mnemonicParsing="false" onAction="#selectLineTool" text="Linea" />
             <Button fx:id="buttonArco" mnemonicParsing="false" onAction="#selectCircleTool" text="Arco" />
+            <Button fx:id="buttonText" mnemonicParsing="false" onAction="#selectTextTool" text="Text" />
             <Button fx:id="butClear" mnemonicParsing="false" onAction="#handleClearAll" text="Eliminar" />
-            <ColorPicker fx:id="colorPicker" onAction="#handleColorChange" prefHeight="25.0" prefWidth="47.0" />
+            <ColorPicker fx:id="colorPicker" onAction="#handleColorChange" prefHeight="25.0" prefWidth="47.0">
+               <value>
+                  <Color />
+               </value></ColorPicker>
             <ComboBox fx:id="fontSizeBox" onAction="#handleFontSizeChange" prefHeight="25.0" prefWidth="56.0" promptText="14" />
          </items></ToolBar>
       <SplitPane fx:id="splitPane" VBox.vgrow="ALWAYS">
